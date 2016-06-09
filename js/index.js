@@ -3,8 +3,8 @@
  *
  * @module index
  */
-(function(){
-  "use strict";
+;(function () {
+  'use strict'
 
   console.log('running')
-})();
+})()

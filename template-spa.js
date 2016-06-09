@@ -3,8 +3,7 @@
  *
  * @module template-spa
  */
-(function () {
-
+;(function () {
   var express = require('express')
   var serveStatic = require('serve-static')
   var pkg = require('./package')
@@ -35,13 +34,12 @@
 
   app.listen(PORT)
 
-
   /**
    * If not in production mode, use browser sync for rapid development
    *
    * @param {Object} app the Express app to use
    */
-  function setupEnvironment(app) {
+  function setupEnvironment (app) {
     if (!isProductionMode) {
       /* imports for dev mode */
       var browserSync = require('browser-sync')
@@ -68,5 +66,3 @@
     }
   }
 })()
-
-

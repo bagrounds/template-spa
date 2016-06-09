@@ -1,0 +1,14 @@
+extend template
+
+block head
+    script(src='js/index.js')
+
+block body
+    main
+        article
+            h1 template-spa
+
+            script#__bs_script__
+                | //<![CDATA[
+                | document.write("<script async src='http://HOST:3001/browser-sync/browser-sync-client.2.12.10.js'><\/script>".replace("HOST", location.hostname));
+                | //]]>

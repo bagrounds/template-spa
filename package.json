@@ -1,0 +1,77 @@
+{
+  "name": "template-spa",
+  "version": "0.1.0",
+  "description": "A template for single page applications (SPA).",
+  "main": "template-spa.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prestart": "npm run build",
+    "start": "NODE_ENV=production node template-spa.js",
+    "predev": "npm run build & npm run watchify &",
+    "dev": "NODE_ENV=development node template-spa.js",
+    "pretest": "npm run lint",
+    "test": "mocha",
+    "precoverage": "rm -rf coverage",
+    "coverage": "istanbul cover _mocha && cat ./coverage/lcov.info | coveralls",
+    "postcoverage": "codeclimate-test-reporter < coverage/lcov.info",
+    "predocument": "npm test && rm -rf docs",
+    "document": "jsdoc --destination docs -c .jsdoc.json -r",
+    "prelint": "standard-format -w",
+    "lint": "eslint --ignore-path .gitignore .",
+    "gh-pages": "gh-pages-deploy",
+    "prepug": "mkdir -p public && rm -f public/*.html",
+    "pug": "pug views --out public --watch",
+    "prestylus": "mkdir -p public/css && rm -f public/css/*.css",
+    "stylus": "stylus stylus/* -w -o public/css/",
+    "prebrowserify": "mkdir -p public/js && rm -f public/js/*.js",
+    "browserify": "browserify js/index.js -o public/js/index.js",
+    "watchify": "watchify js/index.js -o public/js/index.js",
+    "build": "npm run pug & npm run stylus & npm run browserify"
+  },
+  "dependencies": {
+    "express": "^4.13.4",
+    "finalhandler": "^0.4.1",
+    "serve-static": "^1.10.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "browserify": "^13.0.1",
+    "chai": "^3.5.0",
+    "codeclimate-test-reporter": "^0.3.1",
+    "connect-browser-sync": "^2.0.1",
+    "coveralls": "^2.11.9",
+    "eslint": "^2.9.0",
+    "gh-pages-deploy": "^0.4.2",
+    "istanbul": "^0.4.3",
+    "jsdoc": "^3.4.0",
+    "mocha": "^2.4.5",
+    "pug": "^2.0.0-beta2",
+    "pug-cli": "^1.0.0-alpha6",
+    "standard-format": "^2.2.1",
+    "stylus": "^0.54.5",
+    "watchify": "^3.7.0"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "docs",
+    "prep": [
+      "document"
+    ],
+    "noprompt": false
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bagrounds/template-spa.git"
+  },
+  "keywords": [
+    "template",
+    "spa"
+  ],
+  "author": "Bryan Grounds <bagrounds@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bagrounds/template-spa/issues"
+  },
+  "homepage": "https://github.com/bagrounds/template-spa#readme"
+}

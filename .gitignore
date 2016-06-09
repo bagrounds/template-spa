@@ -1,0 +1,12 @@
+# IntelliJ project files
+.idea
+*.iml
+
+# nodejs modules should be installed locally with npm install
+node_modules
+
+# script generated content
+public
+coverage
+docs
+

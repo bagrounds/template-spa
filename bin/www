@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+/**
+ * Executable file to launch the web application
+ */
+;(function () {
+  'use strict'
+
+  var templateSpa = require('../template-spa')
+
+  templateSpa.serve()
+}) ()

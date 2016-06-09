@@ -8,9 +8,9 @@
   },
   "scripts": {
     "prestart": "npm run build",
-    "start": "NODE_ENV=production node template-spa.js",
+    "start": "NODE_ENV=production node bin/www",
     "predev": "npm run build & npm run watchify &",
-    "dev": "NODE_ENV=development node template-spa.js",
+    "dev": "NODE_ENV=development node bin/www",
     "pretest": "npm run lint",
     "test": "mocha",
     "precoverage": "rm -rf coverage",

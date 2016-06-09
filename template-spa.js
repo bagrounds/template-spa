@@ -8,31 +8,39 @@
   var serveStatic = require('serve-static')
   var pkg = require('./package')
 
-  var isProductionMode = (process.env.NODE_ENV === 'production')
+  var isProductionMode
 
-  var PORT = (isProductionMode) ? 8000 : 8001
-
-  console.log('Running on port ' + PORT)
-
-  var app = express()
-
-  setupEnvironment(app)
-
-  var serveOptions = {
-    index: ['index.html'],
-    extensions: ['html']
+  module.exports = {
+    serve: serve
   }
 
-  if (!isProductionMode) {
-    serveOptions.index = ['index-dev.html']
+  function serve () {
+    isProductionMode = (process.env.NODE_ENV === 'production')
+
+    var PORT = (isProductionMode) ? 8000 : 8001
+
+    var app = express()
+
+    setupEnvironment(app)
+
+    var serveOptions = {
+      index: ['index.html'],
+      extensions: ['html']
+    }
+
+    if (!isProductionMode) {
+      serveOptions.index = ['index-dev.html']
+    }
+
+    // Serve public folder
+    var serve = serveStatic('public', serveOptions)
+
+    app.use(serve)
+
+    app.listen(PORT)
+
+    console.log('Running on port ' + PORT)
   }
-
-  // Serve public folder
-  var serve = serveStatic('public', serveOptions)
-
-  app.use(serve)
-
-  app.listen(PORT)
 
   /**
    * If not in production mode, use browser sync for rapid development

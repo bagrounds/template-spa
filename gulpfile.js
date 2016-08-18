@@ -20,7 +20,7 @@
     },
     MAKE_JS: {
       NAME: 'js',
-      SOURCE: 'js/index.js',
+      SOURCE: 'src/js/index.js',
       OUTPUT: 'public/js',
       FUNCTION: makeJs,
       DEFAULT: true,
@@ -28,7 +28,7 @@
     },
     MAKE_CSS: {
       NAME: 'css',
-      SOURCE: 'stylus/*.styl',
+      SOURCE: 'src/styles/*.styl',
       OUTPUT: 'public/css',
       FUNCTION: makeCss,
       DEFAULT: true,
@@ -36,7 +36,7 @@
     },
     MAKE_HTML: {
       NAME: 'html',
-      SOURCE: 'views/*.pug',
+      SOURCE: 'src/views/*.pug',
       OUTPUT: 'public',
       FUNCTION: makeHtml,
       DEFAULT: true,
@@ -78,7 +78,7 @@
       .pipe(stylus({
         compress: false,
         paths: [
-          'stylus'
+          'src/styles'
         ],
         compile: function (str, path) {
           return stylus(str)

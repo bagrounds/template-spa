@@ -7,9 +7,12 @@
     "test": "test"
   },
   "scripts": {
+    "build": "gulp",
+    "clean": "gulp clean",
+    "watch": "gulp watch",
     "prestart": "npm run build",
     "start": "NODE_ENV=production node bin/www",
-    "predev": "npm run build & npm run watchify &",
+    "predev": "npm run build && npm run watch &",
     "dev": "NODE_ENV=development node bin/www",
     "pretest": "npm run lint",
     "test": "mocha",
@@ -20,15 +23,8 @@
     "document": "jsdoc --destination docs -c .jsdoc.json -r",
     "prelint": "standard-format -w",
     "lint": "eslint --ignore-path .gitignore .",
-    "gh-pages": "gh-pages-deploy",
-    "prepug": "mkdir -p public && rm -f public/*.html",
-    "pug": "pug views --out public --watch",
-    "prestylus": "mkdir -p public/css && rm -f public/css/*.css",
-    "stylus": "stylus stylus/* -w -o public/css/",
-    "prebrowserify": "mkdir -p public/js && rm -f public/js/*.js",
-    "browserify": "browserify js/index.js -o public/js/index.js",
-    "watchify": "watchify js/index.js -o public/js/index.js",
-    "build": "npm run pug & npm run stylus & npm run browserify"
+    "eslint": "eslint --ignore-path .gitignore .",
+    "gh-pages": "gh-pages-deploy"
   },
   "dependencies": {
     "express": "^4.13.4",
@@ -44,6 +40,9 @@
     "coveralls": "^2.11.9",
     "eslint": "^2.9.0",
     "gh-pages-deploy": "^0.4.2",
+    "gulp": "^3.9.1",
+    "gulp-pug": "^3.0.4",
+    "gulp-stylus": "^2.5.0",
     "istanbul": "^0.4.3",
     "jsdoc": "^3.4.0",
     "mocha": "^2.4.5",
@@ -52,7 +51,7 @@
     "pug-cli": "^1.0.0-alpha6",
     "standard-format": "^2.2.1",
     "stylus": "^0.54.5",
-    "watchify": "^3.7.0"
+    "vinyl-source-stream": "^1.1.0"
   },
   "gh-pages-deploy": {
     "staticpath": "docs",
